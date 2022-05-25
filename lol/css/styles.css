@@ -1,0 +1,508 @@
+body {
+    background: url('../img/bg_red.jpg') #550000;
+    margin-bottom: 25px;
+    overflow-x: hidden;
+}
+
+h2 {
+    margin-top: 20px;
+    color: rgba(255, 233, 233, 0.9);
+}
+
+.shadow-box {
+    padding: 1.5em;
+    font-size: 1.1em;
+    border-radius: 6px;
+    background-color: rgba(5, 5, 5, 0.2);
+    color: rgba(251, 244, 254, 0.9);
+}
+
+.shadow-box + .shadow-box {
+    margin-top: 25px;
+}
+
+.rule-separator {
+    display: flex;
+    margin: 2em 0;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.rule-separator:before,
+.rule-separator:after {
+    content: '';
+    border-bottom: 1px solid #8c8b8b;
+    width: 40%;
+    height: 0;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+    outline: none;
+    box-shadow: unset;
+    border-bottom: 2px solid transparent;
+}
+
+.btn-group .btn.active {
+    border-bottom-color: unset; 
+}
+
+.list-group,
+.player.card {
+    color: #454545;
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 5, 30, 0.4);
+}
+
+.game-section {
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 10px;
+}
+
+.game-section:last-of-type {
+    border-bottom: none;
+}
+
+.card-point {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    font-family: fantasy;
+    font-weight: 900;
+    text-align: center;
+    color: #FFF1B7;
+    border-radius: 100%;
+    border: 4px solid #e1ae62;
+    background-color: #ffd14d;
+    text-shadow: 1px 1px 2px rgba(78, 46, 4, 0.8);
+    box-shadow: 1px 1px 2px #363535, inset 1px 1px #474646;
+}
+
+.card-point:empty {
+    background-color: rgba(186, 182, 170, 0.3);
+    border-color: rgba(141, 138, 134, 0.2);
+}
+
+.affection-heart {
+    font-size: 0.8em;
+}
+
+.affection-heart.fa-heart-o {
+    color: rgb(223, 146, 146);
+}
+
+.affection-heart.fa-heart {
+    color: rgb(220, 70, 70);
+}
+
+#my_affection {
+    padding: 6px 0 16px;
+}
+
+#my_affection .affection-heart {
+    margin: 0 4px;
+    font-size: 1.1em;
+}
+
+#action_area {
+    display: none;
+    text-align: center;
+}
+
+#my_hand.active + #action_area {
+    display: block;
+}
+
+#game_log {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#game_log li {
+    border: none;
+}
+
+.events .empty-events {
+    display: none;
+    font-size: 1.1em;
+    color: #999;
+    list-style: none;
+}
+
+.events .empty-events:only-child {
+    display: block;
+}
+
+.events li {
+    padding-left: 0.25em;
+    padding-right: 0;
+}
+
+#drawer {
+    position: fixed;
+    top: 0;
+    right: -85vw;
+    width: 95vw;
+    height: 100vh;
+    transition: right 125ms;
+}
+
+#drawer .nav {
+    position: absolute;
+    left: 0;
+    top: 5vh;
+    width: 10vw;
+}
+
+#drawer .nav li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 11vw;
+    height: 10vw;
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    color: #636363;
+    background-color: white;
+    border-radius: 6px 0 0 6px;
+    border-right: 1px solid #636363;
+}
+
+#drawer .nav li.active  {
+    border-right-color: white;
+}
+
+#drawer .content {
+    position: absolute;
+    right: 0;
+    width: 85vw;
+    height: 100vh;
+    background-color: white;
+}
+
+#drawer .content [data-drawer] {
+    display: none;
+    box-sizing: border-box;
+    margin: 16px;
+    height: calc(100% - 32px);
+} 
+
+#drawer .content [data-drawer].active {
+    display: block;
+} 
+
+#drawer.open {
+    right: 0;
+}
+
+.help-drawer {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.help-drawer h3 {
+    border-bottom: 1px solid #636363;
+    font-weight: 300;
+    font-family: cursive;
+}
+
+.help-drawer dd {
+    margin-bottom: 0.75em;
+}
+
+.winner-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    text-align: center;
+}
+
+.winner-card .card-title {
+    margin-bottom: 0.6em;
+}
+
+.card.game-card {
+    flex: none;
+    width: 160px;
+    height: 224px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: border 50ms;
+}
+
+.card.game-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(245, 240, 50, 0.2);
+    opacity: 0;
+    transition: opacity 50ms;
+}
+
+.card.game-card.selected {
+    border: 2px solid rgb(255, 254, 190);
+}
+
+.card.game-card.selected::after {
+    opacity: 1;
+}
+
+.card.game-card img {
+    width: 100%;
+    height: 100%;
+}
+
+#winner_modal .card-blank {
+    font-weight: bold;
+    color: hsl(180, 60%, 26%);
+    text-decoration: underline;
+}
+
+#winner_modal .modal-footer {
+    padding-top: 0;
+    border-top: none;
+}
+
+#winner_modal .modal-body .jkh-card {
+    width: 140px;
+    height: 196px;
+}
+
+.select-button {
+    display: inline-flex;
+    transition: 0.1s opacity linear;
+    opacity: 0;
+    position: absolute;
+    border: 0;
+    padding: 0 4px;
+    background: transparent;
+    font-weight: bold;
+    color: #ededed;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    font-size: 4em;
+}
+
+.select-button:hover {
+    opacity: 1;
+}
+
+.select-button:focus {
+    outline: none;
+}
+
+.select-button.top,
+.select-button.bottom {
+    width: 100%;
+    height: 50%;
+}
+
+.select-button.left,
+.select-button.right {
+    width: 50%;
+    height: 100%;
+}
+
+.select-button.top {
+    top: 0;
+}
+
+.select-button.bottom {
+    bottom: 0;
+}
+
+.select-button.left {
+    left: 0;
+    flex-direction: row;
+}
+
+.select-button.right {
+    right: 0;
+    flex-direction: row-reverse;
+}
+
+.btn.flex-center {
+    margin-top: 24px;
+    flex: none;
+    align-self: center;
+}
+
+#chat_box {
+    height: 40vh;
+    overflow-y: scroll;
+    padding: 3px 6px;
+    background-color: rgba(150, 150, 150, 0.05);
+    margin: 6px 0;
+    border-radius: 4px;
+}
+
+#chat_box p {
+    margin-bottom: 0.25rem;
+}
+
+#chat_count {
+    font-size: 0.4em;
+    position: absolute;
+    top: 3px;
+    right: 2px;
+}
+
+#chat_count:empty {
+    display: none;
+}
+
+.player.card .badge {
+    display: none;
+}
+
+.player.card.self .self-badge {
+    display: block;
+}
+
+.player.card.active .active-badge {
+    display: block;
+}
+
+.player.card.out .eliminated-badge {
+    display: block;
+}
+
+.game-recap {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.player.disconnecting {
+    border-style: dashed;
+    color: #848484;
+}
+
+.player.disconnecting .disconnect-bubbles {
+    display: inline-block;
+}
+
+.disconnect-bubbles {
+    width: 35px;
+    text-align: center;
+    display: none;
+    vertical-align: top;
+    position: relative;
+    top: -3px;
+}
+  
+.disconnect-bubbles > div {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(13, 33, 63, 0.5);
+  
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+  
+.disconnect-bubbles .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.disconnect-bubbles .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    } 40% { 
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card.game-card {
+        width: 35vw;
+        height: 50vw;
+    }
+
+    .game-card.jkh-card,
+    .game-card.jkh-temp {
+        width: 25vw;
+        height: auto;
+        margin: 24px 4px 0;
+    }
+
+    .jkh-card img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #choose_button.flex-center {
+        width: 80%;
+        margin: 25px auto 10px;
+    }
+
+    #winner_modal .modal-body .jkh-card {
+        margin-left: 0;
+        margin-right: 1.5vw;
+        width: 28vw;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #drawer {
+        width: 450px;
+        right: -400px;
+    }
+
+    #drawer .nav {
+        width: 50px;
+    }
+
+    #drawer .nav li {
+        width: 50px;
+        height: 50px;
+    }
+
+    #drawer .content {
+        width: 400px;
+    }
+
+    #chat_box {
+        height: calc(100vh - 82px);
+    }
+
+    #chat_count {
+        top: 10px;
+        right: 6px;
+    }
+
+    #my_hand {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
